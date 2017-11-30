@@ -11,7 +11,8 @@
     "react-navigation": "^1.0.0-beta.15",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "thunk": "0.0.1"
   },
   "name": "get-job",
   "version": "0.0.0",

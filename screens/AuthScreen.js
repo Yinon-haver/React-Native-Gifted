@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Platform, ScrollView, Linking,AsyncStorage ,TouchableOpacity,Dimensions} from 'react-native';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
+import ReduxThunk from 'redux-thunk';
 import * as actions from '../actions';
 import { Button,SocialIcon,Header } from 'react-native-elements';
 import LoginForm from '../src/LoginForm'
@@ -36,7 +37,7 @@ class AuthScreen extends Component {
       }
 
      onAuthComplete(props) {
-        if (props.token) {
+        if (props.token || props.user)  {
           this.props.navigation.navigate('map');
         }
       }
@@ -71,8 +72,11 @@ const styles = {
   
   };
 
-function mapStateToProps({ auth }) {
-    return { token: auth.token };
+const  mapStateToProps= state => {
+    return {
+         token: state.auth.token ,
+         user: state.authWithEmail.user,
+        };
   }
 
 export default connect(mapStateToProps, actions)(AuthScreen);

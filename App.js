@@ -3,6 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Icon, Card ,Button,Header } from 'react-native-elements'
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
+import firebase from 'firebase';
+import ReduxThunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
+
 
 import store from './store';
 import Deck from './src/Deck';

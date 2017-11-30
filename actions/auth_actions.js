@@ -24,7 +24,7 @@ export const facebookLogin = () => async dispatch => {
 
   const doFacebookLogin = async dispatch => {
     let { type, token } = await Facebook.logInWithReadPermissionsAsync('523513211346234', {
-      permissions: ['public_profile', 'email', 'user_location', 'user_birthday']
+      permissions: ['public_profile', 'email', 'user_location', 'user_birthday',]
     });
   
     if (type === 'cancel') {
@@ -33,16 +33,8 @@ export const facebookLogin = () => async dispatch => {
     else if (type === 'success') {
         // Get the user's name using Facebook's Graph API
         const response2 = await fetch(`https://graph.facebook.com/me?fields=id,name,picture&access_token=${token}`);
- 
-         //console.log(response);
          console.log(response2);
-         //console.log(response3);
-         
-         
-         //console.log(`Hi ${(await response.json()).name}!`);
-    
       }
-
     await AsyncStorage.setItem('fb_token', token);
     dispatch({ type: FACEBOOK_LOGIN_SUCCESS, payload: token });
   };
