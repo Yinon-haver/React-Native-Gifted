@@ -11,6 +11,7 @@ import {
 // AsyncStorage.getItem('fb_token');
 
 export const facebookLogin = () => async dispatch => {
+    
     let token = await AsyncStorage.getItem('fb_token');
   
     if (token) {
@@ -26,7 +27,7 @@ export const facebookLogin = () => async dispatch => {
     let { type, token } = await Facebook.logInWithReadPermissionsAsync('523513211346234', {
       permissions: ['public_profile', 'email', 'user_location', 'user_birthday',]
     });
-  
+    //dispatch({type:LOGIN_FB_USER});
     if (type === 'cancel') {
       return dispatch({ type: FACEBOOK_LOGIN_FAIL });
     }

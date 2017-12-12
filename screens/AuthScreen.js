@@ -27,7 +27,7 @@ class AuthScreen extends Component {
    componentDidMount() {
     
         //clera the saved token  need to delet this after 
-        AsyncStorage.removeItem('fb_token');
+       // AsyncStorage.removeItem('fb_token');
         this.onAuthComplete(this.props);
         
      }
@@ -37,7 +37,7 @@ class AuthScreen extends Component {
       }
 
      onAuthComplete(props) {
-        if (props.token || props.user)  {
+        if (props.token || props.userLogInWithEmail)  {
           this.props.navigation.navigate('map');
         }
       }
@@ -49,8 +49,8 @@ class AuthScreen extends Component {
     render(){
         console.log(this.props)
         return(
-            <View style={styles.LoginForm}>
-                <LoginForm />
+            <View style={styles.loginForm}>
+                <LoginForm style={styles.loginForm}/>
                  <TouchableOpacity onPress={this.logInWithfacebook} style={styles.buttonStyle}>
                     <SocialIcon
                     title='Sign In With Facebook'
@@ -68,6 +68,9 @@ const styles = {
     buttonStyle: {
         width: SCREEN_WIDTH,
          marginTop: 100
+    },
+    loginForm:{
+        marginTop:50
     }
   
   };
@@ -75,7 +78,8 @@ const styles = {
 const  mapStateToProps= state => {
     return {
          token: state.auth.token ,
-         user: state.authWithEmail.user,
+         userLogInWithEmail: state.authWithEmail.user,
+         loading:state.auth.loading
         };
   }
 

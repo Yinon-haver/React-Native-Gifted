@@ -5,8 +5,13 @@ import { Icon, Card ,Button,CheckBox } from 'react-native-elements'
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 class Deck extends React.Component{
+    buttonPress=() => {
+        console.log("button press")
+
+    }
 // map over all the Data that recived and creat a card for all iteam
     renderCard(){
+      
         return this.props.data.map(item => {
             return (
                 <Card
@@ -22,7 +27,7 @@ class Deck extends React.Component{
                   icon={{ name: 'card-giftcard' }}
                   backgroundColor="#03A9F4"
                   title="Take It Free !"
-                  onPress={console.log("BAtek")}
+                  onPress={this.buttonPress}
                 />
                 <CheckBox
                     center
